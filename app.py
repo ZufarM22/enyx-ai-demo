@@ -44,7 +44,12 @@ if st.button("Analisis Error"):
                 response = requests.post(url, headers=headers, json=payload)
                 response_data = response.json()
                 
-                # Ekstrak teks balasan dari struktur JSON Google
+                # 🔍 PERBAIKAN DI SINI: Cek apakah ada error dari Google Cloud
+                if 'error' in response_data:
+                    st.error(f"❌ Google API Error ({response_data['error'].get('code')}): {response_data['error'].get('message')}")
+                    st.stop() # Hentikan proses render UI bawah jika error
+                
+                # Ekstrak teks balasan jika sukses
                 ai_text = response_data['candidates'][0]['content']['parts'][0]['text']
                 ai_output = json.loads(ai_text)
                 
