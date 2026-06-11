@@ -38,7 +38,7 @@ if st.button("Analisis Error"):
                 "Content-Type": "application/json"
             }
             payload = {
-                "model": "llama-3.3-70b-specdec",  # Model gratis, besar, dan super cepat di Groq
+                "model": "llama-3.3-70b-versatile",  # 🔍 UPDATE: Menggunakan model Llama terbaru yang aktif
                 "messages": [{"role": "user", "content": full_prompt}],
                 "response_format": {"type": "json_object"}  # Memaksa Groq mengembalikan JSON murni
             }
